@@ -21,7 +21,7 @@ function News() {
       <div className="news-items">
         {val.map((x) => (
           <NewsItems
-            id={x.title}
+            key={x.title}
             title={x.title}
             description={x.description}
             img={x.urlToImage}
