@@ -5,8 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 function Top() {
   return (
     <>
-    
-      <Navbar bg="dark" variant="dark">
+      <Navbar sticky="top" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">

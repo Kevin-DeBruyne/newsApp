@@ -2,6 +2,7 @@ import { useState,useEffect } from 'react';
 import axios from "axios";
 import NewsItems from './NewsItems';
 import '../News.css';
+// import InfiniteScroll from "react-infinite-scroll-component";
 function News() {
   let hi =
     "https://newsapi.org/v2/top-headlines?country=us&apiKey=e03f10dd7c824e928bddb2329d3d5756";
@@ -22,6 +23,8 @@ function News() {
         {val.map((x) => (
           <NewsItems
             key={x.title}
+            source={x.source.name}
+            link={x.url}
             title={x.title}
             description={x.description}
             img={x.urlToImage}
