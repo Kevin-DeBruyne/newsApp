@@ -5,29 +5,32 @@ import '../News.css';
 // import InfiniteScroll from "react-infinite-scroll-component";
 function News() {
   let hi =
-    "https://newsapi.org/v2/top-headlines?country=us&apiKey=e03f10dd7c824e928bddb2329d3d5756";
+    "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=AIzaSyDBHLiRQUQt4o0WJeYRfz8DAkJGsP9VgP8";
   const [val, setVal] = useState([]);
   useEffect(() => {
     axios
       .get(hi)
       .then((res) => {
-        setVal(res.data.articles);
+        console.log(res.data.items);
+        setVal(res.data.items);
       })
     // eslint-disable-next-line
   }, []);
   return (
     <div className="news">
       
-      <h1 style={{ marginLeft: "40%", marginTop: "3%" }}>Top News</h1>
+      <h1 style={{ marginLeft: "40%", marginTop: "3%" }}>Popular Videos</h1>
       <div className="news-items">
         {val.map((x) => (
           <NewsItems
-            key={x.title}
-            source={x.source.name}
-            link={x.url}
-            title={x.title}
-            description={x.description}
-            img={x.urlToImage}
+            key={x.id}
+            source={x.snippet.channelTitle}
+            link={`https://www.youtube.com/watch?v=${x.id}`}
+            title={x.snippet.title}
+            description={x.snippet.description.length > 50
+              ? `${x.snippet.description.slice(0, 100)}...`
+              : x.snippet.description}
+            img={x.snippet.thumbnails.high.url}
           />
         ))}
       </div>

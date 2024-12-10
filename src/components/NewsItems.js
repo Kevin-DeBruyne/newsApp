@@ -13,7 +13,7 @@ function NewsItems(props) {
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>{props.description}</Card.Text>
         <a target="_blank" rel="noreferrer" href={props.link}>
-          <Button variant="primary">Read More</Button>
+          <Button variant="primary">Watch the video...</Button>
         </a>
       </Card.Body>
     </Card>
